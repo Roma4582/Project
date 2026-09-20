@@ -7,22 +7,37 @@
     <title>App</title>
 </head>
 <body>
+    <!-- Ваші оригінальні дизайнерські смуги -->
     <div class="vertical-strip"></div>
-     <div class="horizontal-strip"></div>
-      <div class="card1"></div>
-       <div class="card2"></div>
-        <div class="card3"></div>
-         <div class="card4"></div>
-          <div class="card5"></div>
-           <div class="card6"></div>
-            <div class="card7"></div>
-             <div class="card8"></div>
-              <div class="card9"></div>
-               <div class="card10"></div>
-                <div class="card11"></div>
-                 <div class="add-button"></div>
-                  <div class="Rectangle14"></div>
-<input type="text" placeholder="Введіть текст" class="text-zone">
-    <Script src="script.js"></Script>
+    <div class="horizontal-strip"></div>
+    
+    <!-- Ваша оригінальна чорна декоративна кнопка -->
+    <div class="add-button"></div>
+    <div class="Rectangle14"></div>
+    
+    <!-- Поле введення тексту -->
+    <input type="text" placeholder="Введіть текст" class="text-zone" maxlength="65">
+
+    <!-- Динамічний контейнер для статусів зліва -->
+    <div class="squares-container" id="squaresContainer"></div>
+
+    <!-- Контейнер, який завжди містить мінімум 11 рядків, а далі розширюється -->
+    <section class="cards-list" id="cardsList"></section>
+
+    <!-- Спливаюче меню (Модальне вікно) -->
+    <div class="modal-overlay" id="statusModal">
+        <div class="modal-menu">
+            <h3 id="modalTitle">Оберіть статус завдання:</h3>
+            <div class="modal-options">
+                <button class="status-opt red" onclick="addSquareByStatus('#ff4d4d')">Не готово (Червоний)</button>
+                <button class="status-opt yellow" onclick="addSquareByStatus('#ffdb4d')">Десь на середині (Жовтий)</button>
+                <button class="status-opt green" onclick="addSquareByStatus('#4dff4d')">Все готово (Зелений)</button>
+            </div>
+            <button class="delete-tab-btn" id="deleteTabBtn" onclick="removeSquare()">Видалити вкладку повністю</button>
+            <button class="close-modal" onclick="closeStatusMenu()">Скасувати</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
