@@ -1,209 +1,213 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: sans-serif;
+  background-color: #f0f0f0;
+}
+
+/* Початкові дизайнерські смуги */
 .vertical-strip {
-/* Rectangle 1 */
-
-position: absolute;
-width: 50px;
-height: 100%;
-left: 0px;
-top: 0px;
-
-background: #D9D9D9;
- 
+  position: absolute;
+  width: 50px;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  background: #D9D9D9;
+  z-index: 1;
 }
+
 .horizontal-strip {
-  /* Rectangle 2 */
-
-position: absolute;
-width: 100%;
-height: 51px;
-left: 0px;
-top: 0px;
-
-background: #D9D9D9;
-
+  position: absolute;
+  width: 100%;
+  height: 51px;
+  left: 0px;
+  top: 0px;
+  background: #D9D9D9;
+  z-index: 2;
 }
-.card1{
-   /* Rectangle 3 */
 
-position: absolute;
-width: 92.4%;
-height: 51px;
-left: 77px;
-top: 62px;
-
-background: #D9D9D9;
-border-radius: 5px;
- 
+/* Оригінальний інпут */
+.text-zone {
+  position: absolute;
+  width: 409px;
+  height: 33px;
+  left: 388px;
+  top: 9px;
+  background: #F5F5F5;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding-left: 10px;
+  box-sizing: border-box;
+  z-index: 3;
 }
-.card2{
-    /* Rectangle 4 */
 
-position: absolute;
-width: 92.4%;
-height: 51px;
-left: 77px;
-top: 124px;
-
-background: #D9D9D9;
-border-radius: 5px;
-
+/* Оригінальна чорна кнопка додавання тексту */
+.add-button {
+  position: absolute;
+  width: 125px;
+  height: 33px;
+  left: 805px;
+  top: 9px;
+  background: #101010;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 3;
+  transition: background 0.15s ease;
 }
-.card3{
-/* Rectangle 5 */
+.add-button:hover { background: #252525; }
 
-position: absolute;
-width: 92.4%;
-height: 51px;
-left: 77px;
-top: 186px;
-
-background: #D9D9D9;
-border-radius: 5px;
-
+/* Початковий чорний оригінальний квадрат на смузі */
+.rectangle14 {
+  position: absolute;
+  width: 31px;
+  height: 31px;
+  left: 9px;
+  top: 62px;
+  background: #000000;
+  border-radius: 7px;
+  z-index: 3;
 }
-.card4{
-/* Rectangle 6 */
 
-position: absolute;
-width: 92.4%;
-height: 51px;
-left: 77px;
-top: 248px;
-
-background: #D9D9D9;
-border-radius: 5px;
-    
+/* Контейнер автоматично вибудовує картки по вертикалі */
+.cards-list {
+  position: absolute;
+  width: calc(92.4%);
+  top: 62px;
+  left: 77px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px; /* Крок між рядками, щоб збігатися з оригінальним дизайном */
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+  padding-right: 10px;
+  box-sizing: border-box;
 }
-.card5{
-/* Rectangle 7 */
 
-position: absolute;
-width: 92.4%;
-height: 51px;
-left: 77px;
-top: 310px;
-
-background: #D9D9D9;
-border-radius: 5px;
-    
+/* Універсальний клас для карток-рядків */
+.todo-card {
+  width: 100%;
+  min-height: 51px;
+  height: 51px;
+  background: #D9D9D9;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-shrink: 0;
 }
-.card6{
-/* Rectangle 8 */
 
-position: absolute;
-width: 92.4%;
-height: 51px;
-left: 77px;
-top: 372px;
-
-background: #D9D9D9;
-border-radius: 5px;
-    
+/* Спеціальний стиль для порожніх зарезервованих рядків (без кнопок видалення) */
+.todo-card.empty {
+  cursor: default;
 }
-.card7{
-/* Rectangle 9 */
 
-position: absolute;
-width: 92.4%;
-height: 51px;
-left: 77px;
-top: 434px;
-
-background: #D9D9D9;
-border-radius: 5px;
-    
+.card-text {
+  padding-left: 15px;
+  padding-right: 15px;
+  flex-grow: 1;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.2;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #101010;
 }
-.card8{
-/* Rectangle 11 */
 
-position: absolute;
-width: 92.4%;
-height: 51px;
-left: 77px;
-top: 496px;
-
-background: #D9D9D9;
-border-radius: 5px;
-    
+/* Акуратний хрестик видалення */
+.delete-btn {
+  height: 100%;
+  width: 30px;
+  background: rgba(0, 0, 0, 0.03);
+  border: none;
+  color: #555;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.2s, color 0.2s;
+  flex-shrink: 0;
 }
-.card9{
-/* Rectangle 12 */
+.delete-btn:hover { background: #ff4d4d; color: white; }
 
-position: absolute;
-width: 92.4%;
-height: 51px;
-left: 77px;
-top: 558px;
-
-background: #D9D9D9;
-border-radius: 5px;
-    
+/* Статусні квадрати зліва на сірій смузі */
+.squares-container {
+  position: absolute;
+  left: 9px;
+  top: 103px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 4;
 }
-.card10{
-/* Rectangle 10 */
 
-position: absolute;
-width: 92.4%;
-height: 51px;
-left: 77px;
-top: 620px;
-
-background: #D9D9D9;
-border-radius: 5px;
-    
+.status-square {
+  width: 31px;
+  height: 31px;
+  border-radius: 7px;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: transform 0.1s ease, border 0.1s ease;
+  box-sizing: border-box;
 }
-.card11{
-/* Rectangle 13 */
 
-position: absolute;
-width: 92.4%;
-height: 51px;
-left: 77px;
-top: 682px;
-
-background: #D9D9D9;
-border-radius: 5px;
-    
+.status-square.active {
+  transform: scale(1.1);
+  border: 2px solid #ffffff;
+  outline: 1px solid #000000;
 }
-.text-zone{
-/* Rectangle 24 */
 
-position: absolute;
-width: 409px;
-height: 33px;
-left: 388px;
-top: 9px;
-
-background: #F5F5F5;
-border-radius: 10px;
-
+.square-plus-btn {
+  width: 31px;
+  height: 31px;
+  background: transparent;
+  border: 2px dashed #555555;
+  border-radius: 7px;
+  color: #333333;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-sizing: border-box;
 }
-.add-button{
-    /* Rectangle 25 */
 
-position: absolute;
-width: 125px;
-height: 37px;
-left: 780px;
-top: 9px;
-
-background: #101010;
-border-radius: 10px;
-
+/* Модальне меню кольорів */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
 }
-.rectangle14{
- /* Rectangle 14 */
-
-position: absolute;
-width: 31px;
-height: 31px;
-left: 9px;
-top: 62px;
-
-background: #000000;
-border-radius: 7px;
+.modal-menu {
+  background: white; padding: 20px; border-radius: 12px;
+  text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); width: 280px;
 }
-   
-.card1 button{
-    float:right;
+.modal-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; }
+.status-opt { padding: 10px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+.status-opt.red { background: #ff4d4d; color: white; }
+.status-opt.yellow { background: #ffdb4d; }
+.status-opt.green { background: #4dff4d; }
+.close-modal { background: #e0e0e0; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; width: 100%; margin-top: 5px; }
+
+.delete-tab-btn {
+  background: #fff0f0; border: 1px solid #ffcccc; color: #ff4d4d;
+  padding: 8px; border-radius: 6px; cursor: pointer; width: 100%;
+  margin-bottom: 5px; font-weight: bold; display: none;
+}
+.delete-tab-btn:hover { background: #ff4d4d; color: white; }
+
+@media (max-width: 900px) {
+  .text-zone { width: 220px; left: 240px; }
+  .add-button { left: 475px; }
 }
